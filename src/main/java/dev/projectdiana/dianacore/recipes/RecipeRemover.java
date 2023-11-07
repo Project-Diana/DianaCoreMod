@@ -1,7 +1,12 @@
 package dev.projectdiana.dianacore.recipes;
 
 import static dev.projectdiana.dianacore.api.ModHandler.getModItem;
+import static dev.projectdiana.dianacore.api.enums.Mods.AppliedEnergistics2;
+import static dev.projectdiana.dianacore.api.enums.Mods.ImmersiveEngineering;
 import static dev.projectdiana.dianacore.api.enums.Mods.Minecraft;
+import static dev.projectdiana.dianacore.api.enums.Mods.MinefactoryReloaded;
+import static dev.projectdiana.dianacore.api.enums.Mods.PamsHarvestCraft;
+import static dev.projectdiana.dianacore.api.enums.Mods.TinkersConstruct;
 import static dev.projectdiana.dianacore.scripts.IScriptLoader.wildcard;
 
 import java.lang.reflect.Field;
@@ -244,11 +249,73 @@ public class RecipeRemover {
 
         final long timeStart = System.currentTimeMillis();
 
+        // AE2 Re-works
+        removeRecipeByOutputDelayed(getModItem(AppliedEnergistics2.ID, "tile.BlockGrinder", 1, 0));
+
+        // Immersive Engineering Re-works
+        removeRecipeByOutputDelayed(getModItem(ImmersiveEngineering.ID, "stoneDecoration", 2, 1));
+
+        // Minecraft Re-works
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 0),
+            new Object[] { getModItem(Minecraft.ID, "log", 1, 0), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 1),
+            new Object[] { getModItem(Minecraft.ID, "log", 1, 1), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 1),
+            new Object[] { getModItem(PamsHarvestCraft.ID, "pamMaple", 1, 0), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 2),
+            new Object[] { getModItem(Minecraft.ID, "log", 1, 2), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 3),
+            new Object[] { getModItem(Minecraft.ID, "log", 1, 3), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 3),
+            new Object[] { getModItem(PamsHarvestCraft.ID, "pamPaperbark", 1, 0), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 3),
+            new Object[] { getModItem(PamsHarvestCraft.ID, "pamCinnamon", 1, 0), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapelessDelayed(
+            getModItem(Minecraft.ID, "planks", 3, 3),
+            getModItem(MinefactoryReloaded.ID, "rubberwood.log", 1, 0));
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 4),
+            new Object[] { getModItem(Minecraft.ID, "log2", 1, 0), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+        removeRecipeShapedDelayed(
+            getModItem(Minecraft.ID, "planks", 4, 5),
+            new Object[] { getModItem(Minecraft.ID, "log2", 1, 1), null, null },
+            new Object[] { null, null, null },
+            new Object[] { null, null, null });
+
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "torch", 4, 0));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "paper", 2, 0));
+        removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "paper", 3, 0));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "brick_block", 1, 0));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "brick_block", 2, 0));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "furnace", 1, 0));
         removeRecipeByOutputDelayed(getModItem(Minecraft.ID, "chest", 1, 0));
         removeRecipeShapelessDelayed(getModItem(Minecraft.ID, "flint", 1, 0), getModItem(Minecraft.ID, "gravel", 1, 0));
+
+        // Tinkers Construct Re-works
+        removeRecipeByOutputDelayed(getModItem(TinkersConstruct.ID, "blankPattern", 1, 0));
 
         stopBuffering();
         bufferingRecipes = false;

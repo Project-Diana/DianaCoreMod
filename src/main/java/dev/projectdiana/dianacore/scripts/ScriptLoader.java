@@ -13,7 +13,8 @@ public class ScriptLoader {
     public static void run() {
         IScriptLoader.missing.setStackDisplayName(EnumChatFormatting.RED + "Missing item! Please report it on github!");
 
-        List<IScriptLoader> scripts = new ArrayList<>(Arrays.asList(new ScriptMinecraft()));
+        List<IScriptLoader> scripts = new ArrayList<>(
+            Arrays.asList(new ScriptAE2(), new ScriptMinecraft(), new ScriptTinkersConstruct()));
 
         ArrayList<String> errored = new ArrayList<>();
         final long totalTimeStart = System.currentTimeMillis();
